@@ -31,9 +31,18 @@ public class Usuario {
     @NotNull
     private char status;
 
+
     @NotNull
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
+
+    @NotNull
+    @Column(name = "data_criacao")
+    private LocalDate dataCriacao;
+
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
 
     public Long getId() {
         return id;
@@ -99,6 +108,14 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
+    public LocalDate getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -110,6 +127,7 @@ public class Usuario {
                 ", senha='" + senha + '\'' +
                 ", status=" + status +
                 ", dataNascimento=" + dataNascimento +
+                ", dataCriacao=" + dataCriacao +
                 '}';
     }
 }
